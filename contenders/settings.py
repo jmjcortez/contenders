@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'contenders',
         'USER': 'postgres',
         'PASSWORD': 'jared123',
-        'HOST': '127.0.0.1',
+        'HOST': 'contenders2.cmgazgvkzrel.us-east-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
@@ -123,3 +123,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'fightmate.User'
