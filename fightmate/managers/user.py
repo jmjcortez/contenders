@@ -10,7 +10,7 @@ class UserManager(BaseUserManager):
 			first_name=first_name,
 			is_staff=is_staff,
 			is_admin=is_admin,
-			is_superuser=is_super_user
+			is_superuser=is_superuser
 		)
 		
 		user_obj.set_password(password)
