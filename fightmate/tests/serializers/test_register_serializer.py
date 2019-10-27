@@ -1,5 +1,3 @@
-import factory
-
 from django.test import TestCase
 
 from fightmate.models.user import User
@@ -31,7 +29,9 @@ class RegisterUserSerializerTest(TestCase):
         }
 
         serializer = RegisterUserSerializer(data=data)
+        serializer.is_valid()
+        serializer.save()
 
-        user = User.objects.get(email="test@email.com")
+        user = User.objects.filter(email="test@email.com").first()
 
-        ###assert user exists
+        self.assertIsNotNone(user)

@@ -5,8 +5,10 @@ from rest_framework.response import Response
 from fightmate.serializers.register import RegisterUserSerializer 
 
 class RegisterViewSet(ViewSet):
+    
+    permission_classes = []
+    
     def create(self, request):
-        pass
         serializer = RegisterUserSerializer(data=request.data)
 
         if serializer.is_valid(raise_exception=True):
