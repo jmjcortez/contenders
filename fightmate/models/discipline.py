@@ -3,6 +3,9 @@ from django.db import models
 
 class Discipline(models.Model):
 	name = models.CharField(max_length=100)
+	punch = models.BooleanField()
+	kick = models.BooleanField()
+	grapple = models.BooleanField()
 
 	class Meta:
 		db_table = 'discipline'

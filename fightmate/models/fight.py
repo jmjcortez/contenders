@@ -8,10 +8,7 @@ class Fight(models.Model):
 	fight_time = models.DateTimeField()
 	result_fighter_1 = models.CharField(max_length=100, null=True, blank=True)
 	result_fighter_2 = models.CharField(max_length=100, null=True, blank=True)
-
-	#fight_lat and lon POST_GIS
-	latitude = models.FloatField()
-	longitude = models.FloatField()
-
+	rate_fighter_1 = models.BooleanField(blank=True, null=True)
+	rate_fighter_2 = models.BooleanField(blank=True, null=True)
 	class Meta:
 		db_table = 'fight'
