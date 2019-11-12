@@ -9,6 +9,7 @@ from fightmate.models.location import City, Country
 class User(AbstractBaseUser, PermissionsMixin):
 	email = models.EmailField(unique=True)
 	first_name = models.CharField(max_length=100)
+	last_name = models.CharField(max_length=100, null=True, blank=True)
 	date_of_birth = models.DateTimeField(null=True, blank=True)
 	weight = models.FloatField(null=True, blank=True)
 	height = models.FloatField(null=True, blank=True)
