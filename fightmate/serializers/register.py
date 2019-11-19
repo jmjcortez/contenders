@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from fightmate.models.user import User
 
+
 class RegisterUserSerializer(serializers.Serializer):
 
     email = serializers.EmailField()
