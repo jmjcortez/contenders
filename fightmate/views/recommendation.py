@@ -9,11 +9,11 @@ from fightmate.models.user import User
 
 class RecommendationViewSet(ViewSet):
 
+  # temporary
   permission_classes = []
   authentication_classes = []
 
   def list(self, request, **kwargs):
-    
     #call recommendation function when it's done
     
     #Temporary, looks like shit
