@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 
 from fightmate.view_models.stats import StatsOverviewViewModel
-
+from fightmate.serializers.stats import StatsOverviewSerializer
 
 class StatsViewSet(ViewSet):
 
@@ -16,5 +16,26 @@ class StatsViewSet(ViewSet):
   @action(detail=False, url_path='overview')
   def overview(self, request):
 
+    vm = StatsOverviewViewModel(
+      contenders_nearby_count=54, #call function
+      contenders_fighting_city_count=321,
+      contenders_fighting_country_count=7681,
+      contenders_global_count=75213,
+      contenders_per_discipline={
+        'kick': 1,
+        'punch': 32,
+        'grapple': 123
+      },
+      contenders_per_combat_type={
+        'MMA': 21,
+        'Muay Thai': 312,
+        'Boxing': 91,
+        'Karate': 12,
+        'Taekwondo': 42,
+      }
+    )
 
-    return Response(status=status.HTTP_200_OK)
+    serializer = StatsOverviewSerializer(data=vm.__dict__)
+    serializer.is_valid(raise_exception=True)
+
+    return Response(status=status.HTTP_200_OK, data=serializer.data)
