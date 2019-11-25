@@ -9,3 +9,12 @@ class Bio(models.Model):
 
 	class Meta:
 		db_table = 'bio'
+
+
+class Pictures(models.Model):
+  is_main = models.BooleanField()
+  url = models.CharField(max_length=100)
+  bio = models.ForeignKey(Bio, on_delete=models.PROTECT, related_name='pictures')
+
+  class Meta:
+    db_table = 'pictures'
