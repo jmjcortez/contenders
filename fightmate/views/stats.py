@@ -16,6 +16,7 @@ class StatsViewSet(ViewSet):
   @action(detail=False, url_path='overview')
   def overview(self, request):
 
+    # put all your logic in VM, kasi ano pang purpose nito duh
     vm = StatsOverviewViewModel(
       contenders_nearby_count=54, #call function
       contenders_fighting_city_count=321,
