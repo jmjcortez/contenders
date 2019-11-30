@@ -8,7 +8,7 @@ class RecommendationSerializer(serializers.Serializer):
   email = serializers.EmailField()
   first_name = serializers.CharField()
   bio_text = serializers.CharField()
-  pictures = PictureSerializer(many=True, allow_null=True)
+  pictures = PictureSerializer(many=True, allow_null=True, required=False)
 
 class RecommendationListSerializer(serializers.Serializer):
   recommendations = RecommendationSerializer(many=True)

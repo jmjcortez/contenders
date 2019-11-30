@@ -32,6 +32,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 	REQUIRED_FIELDS = ['first_name']
 
 	def get_latest_bio(self):
-		bios = self.bios.filter(is_last=True)
+		bios = self.bios.filter(is_last=True).first()
 
 		return bios
