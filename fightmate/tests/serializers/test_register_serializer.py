@@ -3,9 +3,6 @@ from django.test import TestCase
 from fightmate.models.user import User
 from fightmate.serializers.register import RegisterUserSerializer
 
-###
-###  MODIFY THE DB FOR TEST
-###
 class RegisterUserSerializerTest(TestCase):
 
     def test_serializes(self):

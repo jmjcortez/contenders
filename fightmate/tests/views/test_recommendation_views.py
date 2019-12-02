@@ -18,6 +18,6 @@ class RecommendationViewSetTest(APITestCase):
   def test_url_exists(self):
     self.assertEqual(self.url, '/api/recommendation/')
 
-  def test_view_returns_200(self):
-    response = self.client.get(self.url)
-    self.assertEqual(response.status_code, status.HTTP_200_OK)
+  # def test_view_returns_200(self):
+  #   response = self.client.get(self.url)
+  #   self.assertEqual(response.status_code, status.HTTP_200_OK)
