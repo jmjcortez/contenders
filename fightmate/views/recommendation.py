@@ -15,16 +15,18 @@ class RecommendationViewSet(ViewSet):
 
   def list(self, request, **kwargs):
 
-    users = User.objects.all()
+    users = User.objects.all()[:5]
     recommendations = []
-    
+
     for user in users:
       main_bio = user.get_latest_bio()
 
       recommendations.append({
         'email': user.email,
         'first_name': user.first_name,
-        'bio_text': main_bio.text,
+        'bio_text': main_bio.text if main_bio else 'Random bio to fill in, will change once db finished',
+        'disciplines': [ discipline.__dict__ for discipline in user.get_disciplines() ],
+        'pkg': user.get_pkg()
       })
     
     num_recommendations = len(users)
