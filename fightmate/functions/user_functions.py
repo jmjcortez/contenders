@@ -16,6 +16,8 @@ def get_recommended_users(user_id):
         )
 
         return conn_contenders
+
+     # conn_contenders = contenders_connection()
     
     q = """ select a.id,
                date(a.date_of_birth) as dob,
@@ -37,8 +39,8 @@ def get_recommended_users(user_id):
              discipline as c on b.discipline_id = c.id
         where a.id = {}
         limit 10
-         """.format(this_user)
-    user = pd.read_sql(q, conn_contenders)
+         """.format(user_id)
+    user = pd.read_sql(q, contenders_connection())
     
     q = """ select a.id,
                date(a.date_of_birth) as dob,
@@ -67,7 +69,7 @@ def get_recommended_users(user_id):
                     user['punch'][0],
                     user['gender'][0],
                     user['id'][0])
-    similar_users = pd.read_sql(q, conn_contenders)
+    similar_users = pd.read_sql(q, contenders_connection())
     similar_users = similar_users.sample(frac=1)
     
     return list(similar_users['id'])

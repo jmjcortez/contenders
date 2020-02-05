@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from fightmate.serializers.recommendation import RecommendationListSerializer
 from fightmate.models.user import User
-
+from fightmate.functions.user_functions import get_recommended_users
 
 class RecommendationViewSet(ViewSet):
 
@@ -14,11 +14,14 @@ class RecommendationViewSet(ViewSet):
   authentication_classes = []
 
   def list(self, request, **kwargs):
-
-    users = User.objects.all()[:5]
     recommendations = []
+    user = User.objects.get(id=9962)
+    print('generating recommendations')
+    recommended_user_ids = get_recommended_users(user.id)
 
-    for user in users:
+    recommended_users = User.objects.filter(id__in=recommended_user_ids)
+
+    for user in recommended_users:
       main_bio = user.get_latest_bio()
 
       recommendations.append({
@@ -29,7 +32,7 @@ class RecommendationViewSet(ViewSet):
         'pkg': user.get_pkg()
       })
     
-    num_recommendations = len(users)
+    num_recommendations = len(recommended_users)
 
     serializer = RecommendationListSerializer(data={
       'num_recommendations': num_recommendations,
