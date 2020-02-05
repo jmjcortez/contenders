@@ -21,7 +21,7 @@ class RecommendationViewSet(ViewSet):
 
     recommended_users = User.objects.filter(id__in=recommended_user_ids)
 
-    for user in recommended_users:
+    for user in recommended_users[:5]:
       main_bio = user.get_latest_bio()
 
       recommendations.append({
